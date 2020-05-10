@@ -6,7 +6,7 @@ const github = require('@actions/github');
 // most @actions toolkit packages have async methods
 async function run() {
   try { 
-    const token = core.getInput('token');
+    const token = process.env['GITHUB_TOKEN'];
     if (!token) core.setFailed(`Missing Token`);
 
     const gitClient = new github.GitHub(token);
