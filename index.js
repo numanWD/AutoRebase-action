@@ -37,15 +37,11 @@ async function run() {
     
     console.log(`PR info ${JSON.stringify(pr)}`);
 
-    if (prInfo.merged) core.setFailed('Already Merged');
-    if (!prInfo.rebaseable) core.setFailed('The PR is not Rebaseable. We have some conflicts.');
-
-
     console.log(prInfo.labels.find(({ name }) => name === label)); 
 
+    if (prInfo.merged) core.setFailed('Already Merged');
+    if (!prInfo.rebaseable) core.setFailed('The PR is not Rebaseable. We have some conflicts.');
     if (prInfo.rebaseable) await rebase();
-
-
 
   } 
   catch (error) {
