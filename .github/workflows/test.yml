@@ -15,3 +15,5 @@ jobs:
       uses: ./
       with:
         label: autorebase
+      env: 
+        token: ${{ secrets.GIT_TOKEN }}  
