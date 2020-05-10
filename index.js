@@ -14,14 +14,16 @@ async function run() {
     console.log(`env ${JSON.stringify(process.env)}`);
 
     const context = await github.context;
-    const pull_number = context.payload.pull_request.number;
+
+    console.log(`context ${JSON.stringify(context.payload)}`);
+    const prNumber = context.payload.pull_request.number;
     const owner = context.payload.repository.owner.login;
     const repo = context.payload.repository.name;
 
     const params = {
       owner,
       repo,
-      pull_number
+      prNumber
     };
 
     let pr = await gitClient.pulls.get(params);
