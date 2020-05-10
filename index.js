@@ -2,10 +2,10 @@ const core = require('@actions/core');
 // const exec = require('@actions/exec');
 const github = require('@actions/github');
 
-
 // most @actions toolkit packages have async methods
 async function run() {
   try { 
+    const label = core.getInput('label');
     const token = process.env['GITHUB_TOKEN'];
     if (!token) core.setFailed(`Missing Token`);
 
@@ -31,13 +31,17 @@ async function run() {
         rebaseable: pr.data.rebaseable,
         merged: pr.data.merged,
         base_branch: pr.data.base.ref,
-        head_branch: pr.data.head.ref
+        head_branch: pr.data.head.ref,
+        labels: pr.data.labels
     };
     
     console.log(`PR info ${JSON.stringify(pr)}`);
 
     if (prInfo.merged) core.setFailed('Already Merged');
     if (!prInfo.rebaseable) core.setFailed('The PR is not Rebaseable. We have some conflicts.');
+
+
+    console.log(prInfo.labels.find(({ name }) => name === label)); 
 
     if (prInfo.rebaseable) await rebase();
 
