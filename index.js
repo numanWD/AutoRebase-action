@@ -7,7 +7,7 @@ const github = require('@actions/github');
 async function run() {
   try { 
     const context = await github.context;
-    console.log(`pull_number ${context}`);
+    console.log(`pull_number ${console.log(JSON.stringify(context.payload))}`);
     // const pull_number = context.payload.issue.number;
     const owner = context.payload.repository.full_name.split('/')[0];
     const repo = context.payload.repository.name;
