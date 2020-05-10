@@ -34,7 +34,13 @@ async function run() {
         head_branch: pr.data.head.ref
     };
     
-    console.log(`PR info ${JSON.stringify(prInfo)}`);
+    console.log(`PR info ${JSON.stringify(pr)}`);
+
+    if (prInfo.merged) core.setFailed('Already Merged');
+    if (!prInfo.rebaseable) core.setFailed('The PR is not Rebaseable. We have some conflicts.');
+
+    if (rebaseable) await rebase();
+
 
 
   } 
@@ -43,4 +49,12 @@ async function run() {
   }
 }
 
+const rebase = async (args) => {
+  console.log(`Let's reabse`);
+};
+
+
+
 run()
+
+
