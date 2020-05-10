@@ -11,6 +11,7 @@ async function run() {
 
     const gitClient = new github.GitHub(token);
 
+    const context = await github.context;
     const pull_number = context.payload.issue.number;
     const owner = context.payload.repository.owner.login;
     const repo = context.payload.repository.name;
@@ -29,6 +30,9 @@ async function run() {
         head_branch: pr.data.head.ref
     };
     
+    console.log(`PR info ${JSON.stringify(prInfo)}`);
+
+
   } 
   catch (error) {
     core.setFailed(error.message);
