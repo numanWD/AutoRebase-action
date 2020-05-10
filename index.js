@@ -16,7 +16,7 @@ async function run() {
     const context = await github.context;
 
     console.log(`context ${JSON.stringify(context.payload)}`);
-    const prNumber = context.payload.pull_request.number;
+    const prNumber = context.payload.repository.open_issues;
     const owner = context.payload.repository.owner.login;
     const repo = context.payload.repository.name;
 
