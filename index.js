@@ -12,6 +12,7 @@ async function run() {
     const owner = context.payload.repository.full_name.split('/')[0];
     const repo = context.payload.repository.name;
     console.log(`repo ${repo}`)
+    console.log(`repo ${owner}`)
     const pull_request = context.payload.pull_request;
 
     if (! pull_request) {
