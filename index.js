@@ -23,7 +23,7 @@ async function run() {
     const params = {
       owner,
       repo,
-      prNumber
+      pull_number: prNumber
     };
 
     let pr = await gitClient.pulls.get(params);
