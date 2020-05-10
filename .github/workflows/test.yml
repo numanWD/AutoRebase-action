@@ -13,5 +13,3 @@ jobs:
     - run: npm run build
     - name: AutoRebase Step
       run: ./
-      with:
-        label: autorebase
