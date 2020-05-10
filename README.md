@@ -1,9 +1,7 @@
 
-<p align="center">
-  <a href="https://github.com/actions/javascript-action/actions"><img alt="javscript-action status" src="https://github.com/actions/javascript-action/workflows/units-test/badge.svg"></a>
-</p>
+![units-test](https://github.com/numanWD/AutoRebase-action/workflows/units-test/badge.svg)
 
-# Create a JavaScript Action
+# Auto Rebase GitHub PullRequest (PRs)
 
 Use this template to bootstrap the creation of a JavaScript action.:rocket:
 
