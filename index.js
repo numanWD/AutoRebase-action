@@ -11,8 +11,10 @@ async function run() {
 
     const gitClient = new github.GitHub(token);
 
+    console.log(`env ${JSON.stringify(process.env)}`);
+
     const context = await github.context;
-    const pull_number = context.payload.issue.number;
+    const pull_number = context.payload.pull_request.number;
     const owner = context.payload.repository.owner.login;
     const repo = context.payload.repository.name;
 
