@@ -23,7 +23,7 @@ async function run() {
     const params = {
       owner,
       repo,
-      pull_number: prNumber
+      pull_number: 3
     };
 
     let pr = await gitClient.pulls.get(params);
@@ -39,7 +39,7 @@ async function run() {
     if (prInfo.merged) core.setFailed('Already Merged');
     if (!prInfo.rebaseable) core.setFailed('The PR is not Rebaseable. We have some conflicts.');
 
-    if (rebaseable) await rebase();
+    if (prInfo.rebaseable) await rebase();
 
 
 
