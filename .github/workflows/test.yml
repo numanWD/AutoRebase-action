@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: npm ci
-    - uses: npm test
-    - uses: npm run build
-    - uses: ./
+    - run: npm ci
+    - run: npm test
+    - run: npm run build
+    - run: ./
       with:
         label: autorebase
